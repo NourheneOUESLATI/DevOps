@@ -1,13 +1,6 @@
 pipeline {
      agent any
    stages{
-         stage('Git'){
-           steps{
-             echo 'pulling';
-             git branch: 'nourhene',
-             url: 'https://github.com/nurhene/DevOps.git',
-           }
-         }
          stage('test'){
            steps{
              bat """mvn clean install"""
@@ -31,5 +24,6 @@ pipeline {
        failure {
          emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
        }
+     }
          
          
