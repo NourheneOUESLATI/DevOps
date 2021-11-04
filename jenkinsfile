@@ -13,6 +13,16 @@ pipeline {
              bat """mvn clean install"""
            }
          }
+         stage('Sonar'){
+           steps{
+             bat """mvn sonar:sonar""
+           }
+         }
+         stage('nexus'){
+           steps{
+             bat """mvn deploy"""
+           }
+         }
      }
      post {
        success {
