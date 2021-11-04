@@ -8,12 +8,12 @@ pipeline {
          }
          stage('Sonar'){
            steps{
-             bat """mvn sonar:sonar""
+             bat """mvn sonar:sonar"""
            }
          }
          stage('nexus'){
            steps{
-             bat """mvn deploy"""
+             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/DevOps--5SE4-1.0.jar"""
            }
          }
      }
@@ -25,5 +25,6 @@ pipeline {
          emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
        }
      }
+ }
          
          
