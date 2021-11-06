@@ -2,19 +2,18 @@ package tn.esprit.spring;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+//import org.junit.Test;
 import org.apache.log4j.Logger;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import org.junit.runner.RunWith;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.services.IEmployeService;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -50,23 +49,23 @@ import tn.esprit.spring.services.IEmployeService;
 	}
 	
 	/*@Test 
-	void testDeleteEmployeById(){
+	public void testDeleteEmployeById(){
 		ems.deleteEmployeById(25);
-	}*/
-	
-	/*@Test
+	}
+	*/
+	@Test
 	public void testupdateemailEmploye(){
 		ems.getEmployeById(25);
 		assertNotNull(ems.getEmployeById(25));
 		ems.mettreAjourEmailByEmployeId("nourhene.oueslati@esprit.tn", 25);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void testaffecterEmployeADepartement() {
 		ems.getEmployeById(18);
 		depts.findById(1);
 		ems.affecterEmployeADepartement(18, 1);
-	}*/
+	}
 	
 	@Test
 	public void testdesaffecterEmployeADepartement() {
@@ -75,12 +74,10 @@ import tn.esprit.spring.services.IEmployeService;
 		ems.desaffecterEmployeDuDepartement(17, 2);
 	}
 	
-	/*@Test
+	@Test
 	public void testGetEmployeprenom(){
 		Employe e=ems.getEmployeById(17);
-	//	System.out.print(e.getPrenom());
 		assertNotNull(e.getPrenom());
-	} */
-	
+	}
 	
 }

@@ -3,7 +3,7 @@ package tn.esprit.spring;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Optional;
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.repository.ContratRepository;
@@ -41,8 +40,6 @@ public class ContratServiceTest {
 		Contrat c=new Contrat(dateC,"MENSUEL",1200);
 		ci.ajouterContrat(c);
 		assertNotNull(c);
-
-		
 } 
 	
 	/*@Test 
@@ -63,26 +60,6 @@ public class ContratServiceTest {
 	public void testGetAllContrats() {
 		Iterable<Contrat> le= cr.findAll() ;
 		le.forEach(e->l.info(e+"\n"));
-		
-		
-
-	}
-	
-	
-	@Test 
-	public void getContratById()
-	{
-		assertNotNull(cr.findById(10));
-	}
-	
-	@Test 
-	public void updateContrat() {
-		
-		assertNotNull(cr.findById(10));
-		
-		
-	}
-	
-	
+	} 
 }
 
