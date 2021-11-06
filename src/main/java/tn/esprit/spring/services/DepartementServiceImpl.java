@@ -1,7 +1,7 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,12 @@ public class DepartementServiceImpl implements IDepartementService {
 	public void deleteDepartmentById(int id) {
 		try {
 			l.info(" search for department");
-		Departement d = deptRepoistory.findById(id).get();
+				Optional<Departement> dd = deptRepoistory.findById(id);
+
+				Departement d = new Departement();
+		if (dd.isPresent()) {
+			  d= dd.get();
+			}
 		l.info(" found departement");
 		l.info(" deleting  departement");
 		deptRepoistory.delete(d);	
@@ -58,6 +63,7 @@ public class DepartementServiceImpl implements IDepartementService {
 		}
 		
 	}
+		
 
 
 	@Override
