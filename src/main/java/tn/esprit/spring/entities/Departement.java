@@ -35,6 +35,15 @@ public class Departement implements Serializable {
 	
 	@ManyToOne
 	private Entreprise entreprise;
+	
+	
+
+
+	public Departement(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public Departement() {
 		super();
