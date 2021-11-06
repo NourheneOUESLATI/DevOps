@@ -10,11 +10,12 @@
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>DevOps--5SE4</artifactId>
-	<version>1.0</version>
+	<version>1.1.1</version>
 	<name>DevOps--5SE4</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,8 +26,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
+	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
@@ -66,7 +66,6 @@
             <scope>provided</scope>
     </dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -96,5 +95,4 @@
       </plugin>
 		</plugins>
 	</build>
-
 </project>
