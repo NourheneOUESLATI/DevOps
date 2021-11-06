@@ -2,8 +2,8 @@ package tn.esprit.spring;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
+import org.junit.Test;
 import org.apache.log4j.Logger;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.entities.Employe;
@@ -71,7 +71,7 @@ import tn.esprit.spring.services.IEmployeService;
 	}
 	
 	@Test
-	void testGetEmployeprenomById(){
+	void testGetEmployeprenom(){
 		Employe e=ems.getEmployeById(17);
 	//	System.out.print(e.getPrenom());
 		assertNotNull(e.getPrenom());
