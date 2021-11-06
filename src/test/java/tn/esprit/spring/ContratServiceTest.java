@@ -3,7 +3,7 @@ package tn.esprit.spring;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.repository.ContratRepository;
@@ -44,19 +45,19 @@ public class ContratServiceTest {
 		
 } 
 	
-	@Test 
+	/*@Test 
 	public void testDeleteContratByRef(){
 		ci.deleteContratById(3);
 		assertNull(cr.findById(3));
-	}
+	}*/
 	
 	
 	
-	@Test 
+	/*@Test 
 	public void testDeleteAllContrats(){
 		cr.deleteAll();
 		l.info("ALL DELETED");
-	}
+	}*/
 	
 	@Test
 	public void testGetAllContrats() {
@@ -65,8 +66,22 @@ public class ContratServiceTest {
 		
 		
 
-	} 
+	}
 	
+	
+	@Test 
+	public void getContratById()
+	{
+		assertNotNull(cr.findById(10));
+	}
+	
+	@Test 
+	public void updateContrat() {
+		
+		assertNotNull(cr.findById(10));
+		
+		
+	}
 	
 	
 }

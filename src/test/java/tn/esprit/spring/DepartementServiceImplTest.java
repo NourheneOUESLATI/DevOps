@@ -27,6 +27,7 @@ public class DepartementServiceImplTest {
 	private static final Logger l = Logger.getLogger(DepartementServiceImplTest.class); 
 	@Autowired
 	DepartementRepository departementRepository;
+	
 	@Test
 	public void testAjouterDepartement() {
 		
@@ -37,7 +38,7 @@ public class DepartementServiceImplTest {
 		assertEquals(d.getName(),dep.getName());
 		}
 	
-	@Test
+	/*@Test
      public void testUpdateDepartement() {
 
 	Departement dep=ids.getDepartmentById(2);
@@ -69,6 +70,6 @@ public class DepartementServiceImplTest {
 	
 	
 
-	
+	*/
 
 }
