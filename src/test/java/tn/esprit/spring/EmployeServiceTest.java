@@ -2,18 +2,22 @@ package tn.esprit.spring;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
-import org.junit.Test;
+//import org.junit.Test;
 import org.apache.log4j.Logger;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.runner.RunWith;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.services.IEmployeService;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
- class EmployeServiceTest {
+ public class EmployeServiceTest {
 
 	@Autowired
 	IEmployeService ems;
@@ -25,57 +29,55 @@ import tn.esprit.spring.services.IEmployeService;
 	private static final Logger l = Logger.getLogger(EmployeServiceTest.class); 
 	
 	@Test
-	void ajouterEmploye() {
+	public void ajouterEmploye() {
 		Employe e = new Employe("test", "test", "test", true, Role.ADMINISTRATEUR);
 		e = ems.ajouterEmploye(e);
 		assertNotNull(e);
 	}
 
 	@Test
-	void testGetAllEmployes() {
+	public void testGetAllEmployes() {
 		List<Employe> le=ems.getAllEmployes();
 		le.forEach(e->l.info(e+"\n"));
 		assertNotNull(le);
 	}
 	
 	@Test
-	void testGetEmployeById(){
+	public void testGetEmployeById(){
 		ems.getEmployeById(17);
 		assertNotNull(ems.getEmployeById(17));
 	}
 	
 	/*@Test 
-	void testDeleteEmployeById(){
+	public void testDeleteEmployeById(){
 		ems.deleteEmployeById(25);
-	}*/
-	
+	}
+	*/
 	@Test
-	void testupdateemailEmploye(){
+	public void testupdateemailEmploye(){
 		ems.getEmployeById(25);
 		assertNotNull(ems.getEmployeById(25));
 		ems.mettreAjourEmailByEmployeId("nourhene.oueslati@esprit.tn", 25);
 	}
 
 	@Test
-	void testaffecterEmployeADepartement() {
+	public void testaffecterEmployeADepartement() {
 		ems.getEmployeById(18);
 		depts.findById(1);
 		ems.affecterEmployeADepartement(18, 1);
 	}
 	
 	@Test
-	void testdesaffecterEmployeADepartement() {
+	public void testdesaffecterEmployeADepartement() {
 		ems.getEmployeById(17);
 		depts.findById(2);
 		ems.desaffecterEmployeDuDepartement(17, 2);
 	}
 	
 	@Test
-	void testGetEmployeprenom(){
+	public void testGetEmployeprenom(){
 		Employe e=ems.getEmployeById(17);
-	//	System.out.print(e.getPrenom());
 		assertNotNull(e.getPrenom());
 	}
-	
 	
 }

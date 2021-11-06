@@ -40,8 +40,6 @@ public class ContratServiceTest {
 		Contrat c=new Contrat(dateC,"MENSUEL",1200);
 		ci.ajouterContrat(c);
 		assertNotNull(c);
-
-		
 } 
 	
 	/*@Test 
@@ -62,12 +60,6 @@ public class ContratServiceTest {
 	public void testGetAllContrats() {
 		Iterable<Contrat> le= cr.findAll() ;
 		le.forEach(e->l.info(e+"\n"));
-		
-		
-
 	} 
-	
-	
-	
 }
 
