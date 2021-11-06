@@ -44,19 +44,19 @@ public class ContratServiceTest {
 		
 } 
 	
-	/*@Test 
+	@Test 
 	public void testDeleteContratByRef(){
 		ci.deleteContratById(3);
 		assertNull(cr.findById(3));
-	}*/
+	}
 	
 	
 	
-	/*@Test 
+	@Test 
 	public void testDeleteAllContrats(){
 		cr.deleteAll();
 		l.info("ALL DELETED");
-	}*/
+	}
 	
 	@Test
 	public void testGetAllContrats() {
