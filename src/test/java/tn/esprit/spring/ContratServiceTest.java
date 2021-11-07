@@ -58,8 +58,21 @@ public class ContratServiceTest {
 	
 	@Test
 	public void testGetAllContrats() {
-		Iterable<Contrat> le= cr.findAll() ;
-		le.forEach(e->l.info(e+"\n"));
+		cr.findAll() ;
 	} 
+	
+	@Test 
+	public void getContratById()
+	{
+		assertNotNull(cr.findById(10));
+	}
+	
+	@Test 
+	public void updateContrat() {
+		
+		assertNotNull(cr.findById(10));
+		
+		
+	}
 }
 

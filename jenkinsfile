@@ -19,10 +19,10 @@ pipeline {
      }
      post {
        success {
-         emailext body: 'build success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+         emailext body: 'build success', subject: 'jenkins', to: 'maha.themri1@esprit.tn'
        }
        failure {
-         emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+         emailext body: 'failure success', subject: 'jenkins', to: 'maha.themri1@esprit.tn'
        }
      }
  }
