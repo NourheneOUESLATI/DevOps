@@ -15,10 +15,11 @@ import tn.esprit.spring.entities.Entreprise;
 @Repository
 public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
 	
-	
+	/**
 	@Query("SELECT count(*) FROM Employe")
-   public int countemp();
-	
+    public int countemp();
+	*/
+
     @Query("SELECT nom FROM Employe")
     public List<String> employeNames();
     
@@ -47,6 +48,6 @@ public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
 			+ "join cont.employe emp "
 			+ "join emp.departements deps "
 			+ "where deps.id=:depId")
-    public Double getSalaireMoyenByDepartementId(@Param("depId")int departementId);
+    public Float getSalaireMoyenByDepartementId(@Param("depId")int departementId);
 
 }

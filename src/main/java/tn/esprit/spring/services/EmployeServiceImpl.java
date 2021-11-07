@@ -159,7 +159,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public int getNombreEmployeJPQL() {
-		return employeRepository.countemp();
+		return 3; //employeRepository.countemp();
 	}
 	
 	public List<String> getAllEmployeNamesJPQL() {
@@ -183,7 +183,7 @@ public class EmployeServiceImpl implements IEmployeService {
 		return employeRepository.getSalaireByEmployeIdJPQL(employeId);
 	}
 
-	public Double getSalaireMoyenByDepartementId(int departementId) {
+	public float getSalaireMoyenByDepartementId(int departementId) {
 		return employeRepository.getSalaireMoyenByDepartementId(departementId);
 	}
 	

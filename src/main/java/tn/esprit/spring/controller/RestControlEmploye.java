@@ -142,7 +142,7 @@ public class RestControlEmploye {
 
     @GetMapping(value = "getSalaireMoyenByDepartementId/{iddept}")
     @ResponseBody
-	public Double getSalaireMoyenByDepartementId(@PathVariable("iddept")int departementId) {
+	public Float getSalaireMoyenByDepartementId(@PathVariable("iddept")int departementId) {
 		return iemployeservice.getSalaireMoyenByDepartementId(departementId);
 	}
 
