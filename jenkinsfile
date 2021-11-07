@@ -1,14 +1,24 @@
 pipeline {
      agent any
    stages{
+         stage('compile'){
+           steps{
+             bat """mvn compile"""
+           }
+         }
          stage('test'){
            steps{
-             bat """mvn clean install"""
+             bat """mvn test"""
            }
          }
          stage('Sonar'){
            steps{
              bat """mvn sonar:sonar"""
+           }
+         }
+         stage('packaging'){
+           steps{
+             bat """mvn clean package"""
            }
          }
          stage('nexus'){
@@ -17,12 +27,12 @@ pipeline {
            }
          }
      }
-     post {
+      post {
        success {
-         emailext body: 'build success', subject: 'jenkins', to: 'mahethemri@gmail.com'
+         emailext attachLog: true, body: 'build success', subject: 'jenkins', to: 'mahethemri@gmail.com'
        }
        failure {
-         emailext body: 'failure success', subject: 'jenkins', to: 'mahethemri@gmail.com'
+         emailext attachLog: true, body: 'failure success', subject: 'jenkins', to: 'mahethemri@gmail.com'
        }
      }
  }
