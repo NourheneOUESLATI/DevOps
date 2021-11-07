@@ -2,9 +2,9 @@ package tn.esprit.spring;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
-//import org.junit.Test;
+import org.junit.Test;
 import org.apache.log4j.Logger;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -74,10 +74,10 @@ import tn.esprit.spring.services.IEmployeService;
 		ems.desaffecterEmployeDuDepartement(17, 2);
 	}
 	
-	@Test
+	/*@Test
 	public void testGetEmployeprenom(){
 		Employe e=ems.getEmployeById(17);
 		assertNotNull(e.getPrenom());
 	}
-	
+	*/
 }
