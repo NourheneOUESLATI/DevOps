@@ -3,13 +3,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -33,7 +27,7 @@ public class Departement implements Serializable {
 	@OneToMany(mappedBy="departement")
 	private List<Mission> missions;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private Entreprise entreprise;
 	
 	

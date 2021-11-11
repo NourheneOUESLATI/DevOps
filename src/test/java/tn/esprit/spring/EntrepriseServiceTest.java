@@ -33,21 +33,21 @@ class EntrepriseServiceTest {
     /**
      * TEST METHOD AJOUT DEPARTEMENT
      */
-    /**
+
     @Test
     void testAjouterDepartement() {
         Departement d = new Departement();
         d.setName("Département de test");
         d.setEntreprise(entrepriseService.getEntrepriseById(1));
-        departmentRepository.save(d);
+        entrepriseService.ajouterDepartement(d);
         Optional<Departement> d2 = departmentRepository.findById(d.getId());
-        assertEquals(d.getName(), d2.get().getName());
+        assertEquals(d2.get().getName(), d.getName());
     }
 
     /**
      * TEST METHOD AFFECTATION DEPARTEMENT
      */
-    /**
+
     @Test
     void testAffecterDepartementAEntreprise() {
         Optional<Departement> d = departmentRepository.findById(1);

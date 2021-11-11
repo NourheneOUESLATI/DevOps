@@ -38,7 +38,7 @@ public class DepartementServiceImplTest {
 		assertEquals(d.getName(),dep.getName());
 		}
 
-		/**
+
 	@Test
      public void testUpdateDepartement() {
 
@@ -68,9 +68,5 @@ public class DepartementServiceImplTest {
 		ids.deleteDepartmentById(3);
 		assertNull(ids.getDepartmentById(3));
 	}
-	
-	
-
-	*/
 
 }
