@@ -34,7 +34,7 @@ import tn.esprit.spring.services.IEmployeService;
 		e = ems.ajouterEmploye(e);
 		assertNotNull(e);
 	}
-/*
+
 	@Test
 	public void testGetAllEmployes() {
 		List<Employe> le=ems.getAllEmployes();
@@ -44,15 +44,15 @@ import tn.esprit.spring.services.IEmployeService;
 	
 	@Test
 	public void testGetEmployeById(){
-		ems.getEmployeById(1);
+		ems.getEmployeById(7);
 		assertNotNull(ems.getEmployeById(1));
 	}
-	
+	/*
 	@Test 
 	public void testDeleteEmployeById(){
 		ems.deleteEmployeById(25);
 	}
-	
+	*/
 	@Test
 	public void testupdateemailEmploye(){
 		ems.getEmployeById(1);
@@ -62,22 +62,22 @@ import tn.esprit.spring.services.IEmployeService;
 
 	@Test
 	public void testaffecterEmployeADepartement() {
-		ems.getEmployeById(1);
+		ems.getEmployeById(4);
 		depts.findById(1);
 		ems.affecterEmployeADepartement(1, 1);
 	}
 	
 	@Test
 	public void testdesaffecterEmployeADepartement() {
-		ems.getEmployeById(1);
+		ems.getEmployeById(4);
 		depts.findById(1);
 		ems.desaffecterEmployeDuDepartement(1, 1);
 	}
 	
 	@Test
 	public void testGetEmployeprenom(){
-		Employe e=ems.getEmployeById(1);
+		Employe e=ems.getEmployeById(4);
 		assertNotNull(e.getPrenom());
 	}
-	*/
+	
 }
