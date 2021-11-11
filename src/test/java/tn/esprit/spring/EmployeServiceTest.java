@@ -1,6 +1,6 @@
 package tn.esprit.spring;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 //import org.junit.Test;
 import org.apache.log4j.Logger;
