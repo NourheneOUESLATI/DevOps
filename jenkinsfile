@@ -34,12 +34,12 @@ pipeline {
          }
          stage('Building image') {
            steps { 
-             bat """docker image build -t nurhene/devopsdockimg .""" 
+             bat """docker image build -t nurhene/devopsdockimgg .""" 
            }
          }
          stage('Deploy image') {
            steps { 
-             bat """docker push nurhene/devopsdockimg""" 
+             bat """docker push nurhene/devopsdockimgg""" 
            }
          }
        }
