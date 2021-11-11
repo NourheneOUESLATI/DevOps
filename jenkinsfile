@@ -21,6 +21,7 @@ pipeline {
            steps{
              bat """mvn compile"""
            }
+         }
          stage('test'){
            steps{
              bat """mvn test"""
