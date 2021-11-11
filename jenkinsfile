@@ -34,7 +34,7 @@ pipeline {
          }
          stage('Building image') {
            steps { 
-             bat """docker build -t nurhene/devopsdockimg .""" 
+             bat """docker image build -t nurhene/devopsdockimg .""" 
            }
          }
          stage('Deploy image') {
