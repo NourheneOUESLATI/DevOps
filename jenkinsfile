@@ -34,7 +34,7 @@ pipeline {
          }
          stage('Building image') {
            steps { 
-             bat """docker build -f DevOps--5SE4/dockerfile --force-rm -t nurhene/devopsdockimg .""" 
+             bat """docker build -t nurhene/devopsdockimg .""" 
            }
          }
          stage('Deploy image') {
