@@ -1,13 +1,13 @@
 package tn.esprit.spring;
 
 
-import static org.junit.Assert.*;
-
+//import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-
+import org.junit.jupiter.api.Test;
 import org.apache.log4j.Logger;
 
-import org.junit.Test;
+//import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,7 +38,7 @@ public class DepartementServiceImplTest {
 		assertEquals(d.getName(),dep.getName());
 		}
 	
-	/*@Test
+	@Test
      public void testUpdateDepartement() {
 
 	Departement dep=ids.getDepartmentById(2);
@@ -70,6 +70,6 @@ public class DepartementServiceImplTest {
 	
 	
 
-	*/
+	
 
 }

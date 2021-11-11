@@ -1,14 +1,9 @@
 pipeline {
      agent any
    stages{
-         stage('compile'){
-           steps{
-             bat """mvn compile"""
-           }
-         }
          stage('test'){
            steps{
-             bat """mvn test"""
+             bat """mvn clean install"""
            }
          }
          stage('Sonar'){
@@ -16,25 +11,18 @@ pipeline {
              bat """mvn sonar:sonar"""
            }
          }
-         stage('packaging'){
-           steps{
-             bat """mvn clean package"""
-           }
-         }
          stage('nexus'){
            steps{
-             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.2 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.2.jar"""
+             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.1.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.1.1.jar"""
            }
          }
      }
-      post {
+     post {
        success {
-         emailext attachLog: true, body: 'build success', subject: 'jenkins', to: 'mahethemri@gmail.com'
+         emailext body: 'build success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
        }
        failure {
-         emailext attachLog: true, body: 'failure success', subject: 'jenkins', to: 'mahethemri@gmail.com'
+         emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
        }
      }
  }
-         
-         

@@ -1,0 +1,55 @@
+pipeline {
+   environment
+       {
+         registry = "dockerhub98/dockerimageprojet"
+         registryCredential= 'dockerHub'
+         dockerImage = ''
+       }
+     agent any
+   stages{
+         stage('compile'){
+           steps{
+             bat """mvn compile"""
+           }
+         }
+         stage('test'){
+           steps{
+             bat """mvn test"""
+           }
+         }
+         stage('Sonar'){
+           steps{
+             bat """mvn sonar:sonar"""
+           }
+         }
+         stage('packaging'){
+           steps{
+             bat """mvn clean package"""
+           }
+         }
+         stage('nexus'){
+           steps{
+             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.2 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.2.jar"""
+           }
+         }
+          stage('Docker : Build image') {
+steps {
+   dir("DevOps--5SE4"){
+script {
+   dockerImage = docker.build registry}}}}
+stage('Docker : Push image') {
+steps {
+   dir("DevOps--5SE4"){
+script {
+docker.withRegistry( '', registryCredential ) {
+   dockerImage.push()}}}}}
+     }
+      post {
+       success {
+         emailext attachLog: true, body: 'build success', subject: 'jenkins', to: 'mahethemri@gmail.com'
+       }
+       failure {
+         emailext attachLog: true, body: 'failure success', subject: 'jenkins', to: 'mahethemri@gmail.com'
+       }
+     }
+ }       
