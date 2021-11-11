@@ -7,7 +7,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,7 +37,8 @@ public class DepartementServiceImplTest {
 		
 		assertEquals(d.getName(),dep.getName());
 		}
-	
+
+		/**
 	@Test
      public void testUpdateDepartement() {
 
@@ -69,6 +71,6 @@ public class DepartementServiceImplTest {
 	
 	
 
-	
+	*/
 
 }

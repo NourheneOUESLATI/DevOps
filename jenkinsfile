@@ -13,16 +13,16 @@ pipeline {
          }
          stage('nexus'){
            steps{
-             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.1.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.1.1.jar"""
+             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.2 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.2.jar"""
            }
          }
      }
      post {
        success {
-         emailext body: 'build success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+         emailext body: 'build success', subject: 'jenkins', to: 'mohamedali.znidi1@esprit.tn'
        }
        failure {
-         emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+         emailext body: 'failure success', subject: 'jenkins', to: 'moamedali.znidi1@esprit.tn'
        }
      }
  }
