@@ -1,0 +1,30 @@
+pipeline {
+     agent any
+   stages{
+         stage('test'){
+           steps{
+             bat """mvn clean install"""
+           }
+         }
+         stage('Sonar'){
+           steps{
+             bat """mvn sonar:sonar"""
+           }
+         }
+         stage('nexus'){
+           steps{
+             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.1.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.1.1.jar"""
+           }
+         }
+     }
+     post {
+       success {
+         emailext body: 'build success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+       }
+       failure {
+         emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+       }
+     }
+ }
+         
+         
