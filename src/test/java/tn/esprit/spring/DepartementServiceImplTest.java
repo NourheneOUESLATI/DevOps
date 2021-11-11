@@ -62,11 +62,11 @@ public class DepartementServiceImplTest {
 		assertEquals(2L, dep.getId());
 	}
 	
-	@Test 
+	/*@Test 
 	public void testDeleteDepartementById(){
 		ids.deleteDepartmentById(3);
 		assertNull(ids.getDepartmentById(3));
-	}
+	}*/
 	
 	
 
