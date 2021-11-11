@@ -71,11 +71,14 @@ public class DepartementServiceImpl implements IDepartementService {
 		try {
 			l.info(" get departement");
 			
-			Departement department = null;
-			if(deptRepoistory.findById(departmentId).isPresent())
-			    department = deptRepoistory.findById(departmentId).get();
-			
-		return  department;
+			l.info(" search for department");
+			Optional<Departement> dd = deptRepoistory.findById(departmentId);
+
+			Departement d = new Departement();
+	if (dd.isPresent()) {
+		  d= dd.get();
+		}
+		return  d;
 		} catch (Exception e) {
 			l.error("get departement operation failed");	
 		}
