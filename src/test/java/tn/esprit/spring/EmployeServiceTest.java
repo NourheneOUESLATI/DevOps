@@ -45,15 +45,15 @@ import tn.esprit.spring.services.IEmployeService;
 	
 	@Test
 	public void testGetEmployeById(){
-		ems.getEmployeById(7);
+		ems.getEmployeById(3);
 		assertNotNull(ems.getEmployeById(1));
 	}
-	/*
+	
 	@Test 
 	public void testDeleteEmployeById(){
-		ems.deleteEmployeById(25);
+		ems.deleteEmployeById(43);
 	}
-	*/
+	
 	@Test
 	public void testupdateemailEmploye(){
 		ems.getEmployeById(1);
@@ -65,14 +65,14 @@ import tn.esprit.spring.services.IEmployeService;
 	public void testaffecterEmployeADepartement() {
 		ems.getEmployeById(4);
 		depts.findById(1);
-		ems.affecterEmployeADepartement(1, 1);
+		ems.affecterEmployeADepartement(4, 1);
 	}
 	
 	@Test
 	public void testdesaffecterEmployeADepartement() {
 		ems.getEmployeById(4);
 		depts.findById(1);
-		ems.desaffecterEmployeDuDepartement(1, 1);
+		ems.desaffecterEmployeDuDepartement(4, 1);
 	}
 	
 	@Test
