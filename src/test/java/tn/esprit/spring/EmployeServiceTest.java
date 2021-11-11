@@ -76,7 +76,7 @@ import tn.esprit.spring.services.IEmployeService;
 	
 	@Test
 	public void testGetEmployeprenom(){
-		Employe e=ems.getEmployeById(17);
+		Employe e=ems.getEmployeById(1);
 		assertNotNull(e.getPrenom());
 	}
 	
