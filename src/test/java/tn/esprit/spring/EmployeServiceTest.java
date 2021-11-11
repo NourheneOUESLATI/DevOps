@@ -34,7 +34,7 @@ import tn.esprit.spring.services.IEmployeService;
 		e = ems.ajouterEmploye(e);
 		assertNotNull(e);
 	}
-
+/*
 	@Test
 	public void testGetAllEmployes() {
 		List<Employe> le=ems.getAllEmployes();
@@ -48,11 +48,11 @@ import tn.esprit.spring.services.IEmployeService;
 		assertNotNull(ems.getEmployeById(1));
 	}
 	
-	/*@Test 
+	@Test 
 	public void testDeleteEmployeById(){
 		ems.deleteEmployeById(25);
 	}
-	*/
+	
 	@Test
 	public void testupdateemailEmploye(){
 		ems.getEmployeById(1);
@@ -79,5 +79,5 @@ import tn.esprit.spring.services.IEmployeService;
 		Employe e=ems.getEmployeById(1);
 		assertNotNull(e.getPrenom());
 	}
-	
+	*/
 }
