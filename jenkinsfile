@@ -22,7 +22,7 @@ pipeline {
          emailext body: 'build success', subject: 'jenkins', to: 'mohamedali.znidi1@esprit.tn'
        }
        failure {
-         emailext body: 'failure success', subject: 'jenkins', to: 'mohamedali.znidi1@esprit.tn'
+         emailext body: 'build failure', subject: 'jenkins', to: 'mohamedali.znidi1@esprit.tn'
        }
      }
  }
