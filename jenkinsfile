@@ -1,4 +1,10 @@
 pipeline {
+     environment
+       {
+         registry = "https://hub.docker.com/u/nurhene"
+         registryCredential= 'dockerhub_id'
+         dockerImage = ''
+       }
      agent any
    stages{
          stage('compile'){
@@ -24,6 +30,16 @@ pipeline {
          stage('nexus'){
            steps{
              bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.1.jar"""
+           }
+         }
+         stage('Building image') {
+           steps { 
+             bat """docker build -t nurhene/devopsdockimg .""" 
+           }
+         }
+         stage('Deploy image') {
+           steps { 
+             bat """docker push nurhene/devopsdockimg""" 
            }
          }
        }
