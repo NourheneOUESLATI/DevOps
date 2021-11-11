@@ -31,6 +31,15 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
+	public TimesheetServiceImpl() {
+		super();
+	}
+	public TimesheetServiceImpl(TimesheetRepository timesheetRepository) {
+		this.timesheetRepository=timesheetRepository;
+	}
+	public TimesheetServiceImpl(MissionRepository missionRepository) {
+		this.missionRepository=missionRepository;
+	}
 	public int ajouterMission(Mission mission) {
 		missionRepository.save(mission);
 		return mission.getId();
@@ -61,7 +70,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		timesheetPK.setIdEmploye(employeId);
 		timesheetPK.setIdMission(missionId);
 		
-		Timesheet timesheet = new Timesheet();
+		Timesheet timesheet = new Timesheet(timesheetPK);
 		timesheet.setTimesheetPK(timesheetPK);
 		timesheet.setValide(false); //par defaut non valide
 		timesheetRepository.save(timesheet);
@@ -115,5 +124,11 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	public List<Employe> getAllEmployeByMission(int missionId) {
 		return timesheetRepository.getAllEmployeByMission(missionId);
 	}
+	
+
+ public List<Timesheet> findAllTimesheet() {
+	 return 
+	 (List<Timesheet>) timesheetRepository.findAll();
+ }
 
 }

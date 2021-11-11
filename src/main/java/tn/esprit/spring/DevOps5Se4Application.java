@@ -16,6 +16,7 @@ public class DevOps5Se4Application  implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DevOps5Se4Application.class, args);
+		System.setProperty("log4j.configurationFile","./path_to_the_log4j2_config_file/log4j2.xml");
 	}
 
 	@Override

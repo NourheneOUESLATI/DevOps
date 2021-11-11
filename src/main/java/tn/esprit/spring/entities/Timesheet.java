@@ -27,6 +27,11 @@ public class Timesheet implements Serializable{
 	private Employe employe;
 	
 	
+	public Timesheet(TimesheetPK timesheetPK) {
+		super();
+		this.timesheetPK = timesheetPK;
+	}
+
 	private boolean isValide;
 	
 
