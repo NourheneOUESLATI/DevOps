@@ -31,7 +31,7 @@ public class Entreprise implements Serializable{
 	private String raisonSocial;
 	
 	@OneToMany(mappedBy="entreprise", 
-			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
+			cascade = {CascadeType.ALL, CascadeType.REMOVE},
 			fetch=FetchType.EAGER)
 	private List<Departement> departements = new ArrayList<>();
 

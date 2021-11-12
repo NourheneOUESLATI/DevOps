@@ -38,7 +38,7 @@ class EntrepriseServiceTest {
     void testAjouterDepartement() {
         Departement d = new Departement();
         d.setName("Département de test");
-        d.setEntreprise(entrepriseService.getEntrepriseById(1));
+        d.setEntreprise(new Entreprise());
         entrepriseService.ajouterDepartement(d);
         Optional<Departement> d2 = departmentRepository.findById(d.getId());
         assertEquals(d2.get().getName(), d.getName());
@@ -50,43 +50,42 @@ class EntrepriseServiceTest {
 
     @Test
     void testAffecterDepartementAEntreprise() {
-        Optional<Departement> d = departmentRepository.findById(1);
-        Entreprise e = entrepriseService.getEntrepriseById(1);
-        assertAll("properties",
-                () -> {
-                    assertNotNull(d);
-                    assertNotNull(e);
-                },
-                () -> {
-                    entrepriseService.affecterDepartementAEntreprise(1,1);
-                    assertEquals(d.get().getEntreprise().getId(), e.getId());
-                }
-        );
+        Entreprise e = new Entreprise();
+        Departement d = new Departement();
+        d.setName("Département de test");
+        d.setEntreprise(e);
+        e.setDepartements(List.of(d));
+        entrepriseService.ajouterEntreprise(e);
+        entrepriseService.affecterDepartementAEntreprise(d.getId(), e.getId());
+        assertEquals(e.getDepartements().get(0).getId(), d.getId());
     }
 
     /**
      * TEST METHODS GET ALL DEPARTEMENTS NAMES BY ENTREPRISE ID
      */
-    /**
+
     @Test
     void testGetAllDepartementsNamesByEntreprise() {
-        Entreprise e = entrepriseService.getEntrepriseById(1);
-        List<String> d = entrepriseService.getAllDepartementsNamesByEntreprise(1);
-        assertAll("properties",
-                () -> assertNotNull(d),
-                () -> assertEquals(d.size(), e.getDepartements().size()),
-                () -> assertArrayEquals(d.toArray(), e.getDepartements().toArray()));
+
+        Entreprise e = new Entreprise();
+        Departement d = new Departement();
+        d.setName("Département de test");
+        d.setEntreprise(e);
+        e.setDepartements(List.of(d));
+        entrepriseService.ajouterEntreprise(e);
+        assertArrayEquals(entrepriseService.getAllDepartementsNamesByEntreprise(e.getId()).toArray(), new String[]{"Département de test"});
+
     }
 
     /**
      * TEST METHOD DELETE DEPARTEMENT
      */
-    /**
+
     @Test
     void testDeleteDepartementById() {
         assertNotNull(departmentRepository.findById(1));
         entrepriseService.deleteDepartementById(1);
-        assertNull(departmentRepository.findById(1));
+        assertEquals(Optional.empty(), departmentRepository.findById(1));
     }
-*/
+
 }
