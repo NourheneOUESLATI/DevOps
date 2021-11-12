@@ -33,6 +33,7 @@ import tn.esprit.spring.services.IEmployeService;
 	public void ajouterEmploye() {
 		Employe e = new Employe("test", "test", "test", true, Role.ADMINISTRATEUR);
 		e = ems.ajouterEmploye(e);
+		l.info("added");
 		assertNotNull(e);
 	}
 
@@ -48,12 +49,12 @@ import tn.esprit.spring.services.IEmployeService;
 		ems.getEmployeById(3);
 		assertNotNull(ems.getEmployeById(1));
 	}
-	
+	/*
 	@Test 
 	public void testDeleteEmployeById(){
 		ems.deleteEmployeById(45);
 	}
-	
+	*/
 	@Test
 	public void testupdateemailEmploye(){
 		ems.getEmployeById(1);
