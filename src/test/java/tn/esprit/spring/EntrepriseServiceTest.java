@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -44,7 +43,7 @@ class EntrepriseServiceTest {
 
         int id = entrepriseService.ajouterDepartement(d);
         assertAll("",
-                () -> assertEquals(id, d.getId()),
+                () -> assertEquals(id, d.getId(1)),
                 () -> assertEquals(d.getName(), "Département de test")
         );
     }
@@ -57,8 +56,8 @@ class EntrepriseServiceTest {
         d.setEntreprise(e);
         e.setDepartements(List.of(d));
         entrepriseService.ajouterEntreprise(e);
-        entrepriseService.affecterDepartementAEntreprise(d.getId(), e.getId());
-        assertEquals(e.getDepartements().get(0).getId(), d.getId());
+        entrepriseService.affecterDepartementAEntreprise(d.getId(1), e.getId());
+        assertEquals(e.getDepartements().get(0).getId(1), d.getId(1));
     }
 
     /**

@@ -1,6 +1,5 @@
 package tn.esprit.spring.services;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -88,7 +87,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		//verifier s'il est le chef de departement de la mission en question
 		boolean chefDeLaMission = false;
 		for(Departement dep : validateur.getDepartements()){
-			if(dep.getId() == mission.getDepartement().getId()){
+			if(dep.getId(1) == mission.getDepartement().getId(1)){
 				chefDeLaMission = true;
 				break;
 			}

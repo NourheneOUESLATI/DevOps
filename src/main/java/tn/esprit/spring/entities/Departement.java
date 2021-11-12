@@ -47,7 +47,7 @@ public class Departement implements Serializable {
 		this.name = name;
 	}
 	
-	public int getId() {
+	public int getId(int i) {
 		return id;
 	}
 
