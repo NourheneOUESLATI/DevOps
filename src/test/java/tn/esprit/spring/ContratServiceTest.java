@@ -52,13 +52,7 @@ public class ContratServiceTest {
 		l.info("Contract added" );
 } 
 	
-	@Test 
-	public void testDeleteContratByRef(){
-		assertNotNull(cr.findById(2));
-		cr.deleteById(2);
-		
-		
-	}
+	
 	
 	
 	
@@ -85,6 +79,14 @@ public class ContratServiceTest {
 	}
 	
 	@Test 
+	public void testDeleteContratByRef(){
+		assertNotNull(cr.findById(2));
+		cr.deleteById(2);
+		
+		
+	}
+	
+	@Test 
 	public void updateContrat() throws ParseException {
 		try {
 			String date ="22/22/2030";
@@ -102,9 +104,10 @@ public class ContratServiceTest {
 		
 	@Test
 	public void testaffecterEmployetContrat() {
-		cr.findById(3).get();
-		ci.getEmployeById(2);
-		ci.affecterContratAEmploye(3, 2);
+		cr.findById(1).get();
+		ci.getEmployeById(3);
+		ci.affecterContratAEmploye(1, 3);
+		l.info("le contrat est affecté");
 	}
 		
 		

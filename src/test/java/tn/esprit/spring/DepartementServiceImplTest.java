@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 public class DepartementServiceImplTest {
 	@Autowired 
 	IDepartementService ids;
-	private static final Logger l = LogManager.getLogger(ContratServiceTest.class);
+	private static final Logger l = LogManager.getLogger(DepartementServiceImplTest.class);
 	@Autowired
 	DepartementRepository departementRepository;
 	
