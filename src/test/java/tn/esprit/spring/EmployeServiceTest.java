@@ -36,7 +36,7 @@ import tn.esprit.spring.services.IEmployeService;
 	public void ajouterEmploye() {
 		Employe e = new Employe("test", "test", "test", true, Role.ADMINISTRATEUR);
 		e = ems.ajouterEmploye(e);
-		l.info("added");
+		l.info("Added");
 		assertNotNull(e);
 	}
 
