@@ -1,28 +1,45 @@
 pipeline {
-     agent any
+      agent any
    stages{
-         stage('test'){
+         stage('clean'){
            steps{
-             bat """mvn clean install"""
+             bat """mvn clean"""
            }
          }
+         stage('packaging'){
+           steps{
+             bat """mvn package"""
+           }
+         }
+         stage('compile'){
+           steps{
+             bat """mvn compile"""
+           }
+         }
+         stage('test'){
+           steps{
+             bat """mvn test"""
+           }
+         }         
          stage('Sonar'){
            steps{
-             bat """mvn sonar:sonar"""
+             bat """mvn sonar:sonar   -Dsonar.host.url=http://localhost:9000 -Dsonar.login=38cb8ff3cd6480dc7027341b56e250520f7cbbc4"""
            }
          }
          stage('nexus'){
            steps{
-             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.1.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.1.1.jar"""
+             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.2 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.2.jar"""
            }
          }
-     }
+         
+         
+       }
      post {
        success {
-         emailext body: 'build success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+         emailext body: 'build success', subject: 'jenkins', to: 'm.khalil.manai@gmail.com'
        }
        failure {
-         emailext body: 'failure success', subject: 'jenkins', to: 'nourhene.oueslati@esprit.tn'
+         emailext body: 'failure', subject: 'jenkins', to: 'm.khalil.manai@gmail.com'
        }
      }
  }
