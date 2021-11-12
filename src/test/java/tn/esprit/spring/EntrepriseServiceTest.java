@@ -49,6 +49,8 @@ class EntrepriseServiceTest {
     }
 
     @Test
+
+
     void testAffecterDepartementAEntreprise() {
         Entreprise e = new Entreprise();
         Departement d = new Departement();
