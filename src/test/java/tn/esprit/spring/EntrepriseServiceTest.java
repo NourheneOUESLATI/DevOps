@@ -43,7 +43,7 @@ class EntrepriseServiceTest {
 
         int id = entrepriseService.ajouterDepartement(d);
         assertAll("",
-                () -> assertEquals(id, d.getId(1)),
+                () -> assertEquals(id, d.getId()),
                 () -> assertEquals(d.getName(), "Département de test")
         );
     }
@@ -56,8 +56,8 @@ class EntrepriseServiceTest {
         d.setEntreprise(e);
         e.setDepartements(List.of(d));
         entrepriseService.ajouterEntreprise(e);
-        entrepriseService.affecterDepartementAEntreprise(d.getId(1), e.getId());
-        assertEquals(e.getDepartements().get(0).getId(1), d.getId(1));
+        entrepriseService.affecterDepartementAEntreprise(d.getId(), e.getId());
+        assertEquals(e.getDepartements().get(0).getId(), d.getId());
     }
 
     /**

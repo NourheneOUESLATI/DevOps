@@ -28,7 +28,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 
 	public int ajouterDepartement(Departement dep) {
 		deptRepoistory.save(dep);
-		return dep.getId(1);
+		return dep.getId();
 	}
 	
 	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {

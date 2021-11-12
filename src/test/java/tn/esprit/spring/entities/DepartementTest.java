@@ -15,7 +15,7 @@ class DepartementTest {
     @Test
     void setIdTest() {
         departement.setId(1);
-        assertEquals(1,departement.getId(1));
+        assertEquals(1,departement.getId());
     }
 
 

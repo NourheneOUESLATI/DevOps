@@ -1,5 +1,6 @@
 package tn.esprit.spring;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 //import org.junit.Test;
@@ -36,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
 		e = ems.ajouterEmploye(e);
 		assertNotNull(e);
 	}
-/**
+
 	@Test
 	public void testGetAllEmployes() {
 		List<Employe> le=ems.getAllEmployes();
@@ -64,58 +65,26 @@ import static org.junit.jupiter.api.Assertions.*;
 		Employe e=ems.getEmployeById(17);
 		assertNotNull(e.getPrenom());
 	}
+/*
 
-
-	/**
-	 * TEST METHODS RELATED TO DEPARTMENT CLASS
-	 */
-
-	/**
-	 * TEST METHOD AFFECTED EMPLOYEE TO DEPARTMENT
-	 */
-	/**
 	@Test
-	public void testAffectedEmployeeADepartment() {
-		Optional<Departement> d = departmentRepository.findById(1);
-		Employe e = ems.getEmployeById(1);
-		assertAll("properties",
-				() -> {
-					assertNotNull(d);
-					assertNotNull(e);
-				},
-				() -> {
-					ems.affecterEmployeADepartement(1,1);
-					List<Employe> employees = d.get().getEmployes();
-					assertTrue(employees.contains(e));
-				}
-		);
-	}
+	public void testAffecterEtDisaffectedEmployeeADepartment() {
+		Employe e = new Employe();
+		Departement d = new Departement();
+		departmentRepository.save(d);
+		ems.ajouterEmploye(e);
+		ems.affecterEmployeADepartement(e.getId(), d.getId());
 
-	/**
-	 * TEST METHOD DISAFFECTED EMPLOYEE TO DEPARTMENT
-	 */
-	/**
-	@Test
-	public void testDisaffectedEmployeeADepartment() {
-		Optional<Departement> d = departmentRepository.findById(1);
-		Employe e = ems.getEmployeById(1);
-		assertAll("properties",
-				() -> {
-					assertNotNull(d);
-					assertNotNull(e);
-				},
-				() -> {
-					ems.desaffecterEmployeDuDepartement(1,1);
-					List<Employe> employees = d.get().getEmployes();
-					assertTrue(!employees.contains(e));
-				}
-		);
-	}
+		assertEquals(1, d.getEmployes().size());
 
-	/**
-     * TEST METHOD GET SALAIRE MOYEN BY DEPARTMENT ID
-     */
-	/**
+		ems.desaffecterEmployeDuDepartement(e.getId(), d.getId());
+		assertNotEquals(1, d.getEmployes().size());
+
+
+	}
+*/
+
+/*
 	@Test
     public void testGetSalaireMoyenByDepartmentId() {
         Optional<Departement> d = departmentRepository.findById(1);

@@ -63,7 +63,7 @@ public class DepartementServiceImplTest {
 		Departement dep = new Departement();
 		dep.setName("dep1");
 		ids.ajouterDepartment(dep);
-		Departement d=ids.getDepartmentById(dep.getId(1));
+		Departement d=ids.getDepartmentById(dep.getId());
 		assertEquals(d.getName(), dep.getName());
 	}
 	
@@ -72,7 +72,7 @@ public class DepartementServiceImplTest {
 		Departement dep = new Departement();
 		ids.ajouterDepartment(dep);
 		int total=ids.getAllDepartements().size();
-		ids.deleteDepartmentById(dep.getId(1));
+		ids.deleteDepartmentById(dep.getId());
 		int total2=ids.getAllDepartements().size();
 		assertEquals(total-1, total2);
 	}
