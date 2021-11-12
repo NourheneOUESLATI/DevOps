@@ -102,7 +102,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		timesheet.setValide(true);
 		
 		//Comment Lire une date de la base de données
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		
 	}
 

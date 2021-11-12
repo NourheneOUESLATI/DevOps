@@ -36,30 +36,33 @@ public class ContratServiceTest {
 
 	
 	@Test
-	public void ajoutContrat() throws ParseException {
+	 void TestajoutContrat() throws ParseException {
 		String date ="07/11/2021";
 		Date dateC=new SimpleDateFormat("dd/MM/yyyy").parse(date);
 		Contrat c=new Contrat(dateC,"MENSUEL",1200);
 		ci.ajouterContrat(c);
 		assertNotNull(c);
 } 
-	
-	/*@Test 
+	/*
+	@Test
 	public void testDeleteContratByRef(){
-		ci.deleteContratById(3);
-		assertNull(cr.findById(3));
-	}*/
+		Contrat c = new Contrat(new Date(),"MENSUEL",1200);
+		ci.ajouterContrat(c);
+		assertNotNull(c);
+		ci.deleteContratById(c.getReference());
+		assertNull(cr.findById(c.getReference()));
+	}
+	*/
 	
 	
-	
-	/*@Test 
+	@Test
 	public void testDeleteAllContrats(){
 		cr.deleteAll();
 		l.info("ALL DELETED");
-	}*/
+	}
 	
 	@Test
-	public void testGetAllContrats() {
+	 void testGetAllContrats() {
 		Iterable<Contrat> le= cr.findAll() ;
 		le.forEach(e->l.info(e+"\n"));
 	} 

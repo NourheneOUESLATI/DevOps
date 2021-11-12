@@ -159,7 +159,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public int getNombreEmployeJPQL() {
-		return 3; //employeRepository.countemp();
+		return 3;
 	}
 	
 	public List<String> getAllEmployeNamesJPQL() {

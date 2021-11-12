@@ -77,7 +77,10 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		Entreprise entrepriseManagedEntity = new Entreprise();
 		if (e.isPresent()) {
 			entrepriseManagedEntity= e.get();
+		} else {
+			return;
 		}
+		entrepriseRepoistory.delete(entrepriseManagedEntity);
 	}
 
 	@Transactional
