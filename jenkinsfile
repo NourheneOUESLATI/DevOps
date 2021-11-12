@@ -1,17 +1,17 @@
 pipeline {
      agent any
    stages{
-         stage('test'){
+         stage('Unit Test'){
            steps{
              bat """mvn clean install"""
            }
          }
-         stage('Sonar'){
+         stage('Code Quality Test'){
            steps{
              bat """mvn sonar:sonar"""
            }
          }
-         stage('nexus'){
+         stage('Deploying New Package'){
            steps{
              bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.14 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.14.jar"""
            }
