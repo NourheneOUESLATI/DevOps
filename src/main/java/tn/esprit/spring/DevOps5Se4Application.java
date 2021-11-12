@@ -17,7 +17,7 @@ public class DevOps5Se4Application  implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(DevOps5Se4Application.class, args);
 	}
-
+	
 	@Override
 	public void run(String... args) throws Exception {
 		Departement dep=new Departement(1,"dep2");
