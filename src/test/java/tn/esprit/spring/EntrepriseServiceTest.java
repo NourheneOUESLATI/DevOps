@@ -26,27 +26,28 @@ class EntrepriseServiceTest {
 
     private static final Logger LOGGER = Logger.getLogger(EntrepriseServiceTest.class);
 
-    /**
-     * TEST METHODS RELATED TO DEPARTMENT CLASS
-     */
-
-    /**
-     * TEST METHOD AJOUT DEPARTEMENT
-     */
+    @Test
+    void ajouterEntrepriseTest() {
+        Entreprise e = new Entreprise();
+        e.setName("SAP");
+        int id = entrepriseService.ajouterEntreprise(e);
+        assertAll("",
+                () -> assertEquals(id, e.getId()),
+                () -> assertEquals(e.getName(), "SAP")
+        );
+    }
 
     @Test
     void testAjouterDepartement() {
         Departement d = new Departement();
         d.setName("Département de test");
-        d.setEntreprise(new Entreprise());
-        entrepriseService.ajouterDepartement(d);
-        Optional<Departement> d2 = departmentRepository.findById(d.getId());
-        assertEquals(d2.get().getName(), d.getName());
-    }
 
-    /**
-     * TEST METHOD AFFECTATION DEPARTEMENT
-     */
+        int id = entrepriseService.ajouterDepartement(d);
+        assertAll("",
+                () -> assertEquals(id, d.getId()),
+                () -> assertEquals(d.getName(), "Département de test")
+        );
+    }
 
     @Test
     void testAffecterDepartementAEntreprise() {

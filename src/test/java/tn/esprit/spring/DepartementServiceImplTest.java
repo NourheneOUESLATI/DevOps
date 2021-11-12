@@ -1,7 +1,7 @@
 package tn.esprit.spring;
 
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -19,6 +19,8 @@ import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.repository.DepartementRepository;
 
 import tn.esprit.spring.services.IDepartementService;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -58,15 +60,21 @@ public class DepartementServiceImplTest {
 		}
 	@Test
 	  public void testGetDepartementById(){
-		Departement dep=ids.getDepartmentById(2);
-		l.info(dep);
-		assertEquals(2L, dep.getId());
+		Departement dep = new Departement();
+		dep.setName("dep1");
+		ids.ajouterDepartment(dep);
+		Departement d=ids.getDepartmentById(dep.getId());
+		assertEquals(d.getName(), dep.getName());
 	}
 	
 	@Test 
 	public void testDeleteDepartementById(){
-		ids.deleteDepartmentById(3);
-		assertNull(ids.getDepartmentById(3));
+		Departement dep = new Departement();
+		ids.ajouterDepartment(dep);
+		int total=ids.getAllDepartements().size();
+		ids.deleteDepartmentById(dep.getId());
+		int total2=ids.getAllDepartements().size();
+		assertEquals(total-1, total2);
 	}
 
 }
