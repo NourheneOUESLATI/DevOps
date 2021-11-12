@@ -11,6 +11,7 @@ pipeline {
              bat """mvn clean install"""
            }
          }
+
          stage('Code Quality Test'){
            steps{
              bat """mvn sonar:sonar"""
