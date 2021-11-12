@@ -3,32 +3,32 @@ pipeline {
    stages{
          stage('clean'){
            steps{
-             bat """mvn clean"""
+             mvn clean
            }
          }
          stage('packaging'){
            steps{
-             bat """mvn package"""
+             mvn package
            }
          }
          stage('compile'){
            steps{
-             bat """mvn compile"""
+             mvn compile
            }
          }
          stage('test'){
            steps{
-             bat """mvn test"""
+             mvn test
            }
          }         
          stage('Sonar'){
            steps{
-             bat """mvn sonar:sonar   -Dsonar.host.url=http://localhost:9000 -Dsonar.login=38cb8ff3cd6480dc7027341b56e250520f7cbbc4"""
+             mvn sonar:sonar   -Dsonar.host.url=http://localhost:9000 -Dsonar.login=38cb8ff3cd6480dc7027341b56e250520f7cbbc4
            }
          }
          stage('nexus'){
            steps{
-             bat """mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.2 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.2.jar"""
+             mvn clean package deploy:deploy-file -Dmaven.test.skip=true -DgroupId=tn.esprit.spring -DartifactId=DevOps--5SE4 -Dversion=1.0.2 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/DevOps--5SE4-1.0.2.jar
            }
          }
          
