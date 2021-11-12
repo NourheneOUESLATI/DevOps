@@ -1,7 +1,14 @@
 pipeline {
      agent any
    stages{
+   stage('clean'){
+        
          stage('Unit Test'){
+           steps{
+             bat """mvn test"""
+           }
+         
+         stage('build'){
            steps{
              bat """mvn clean install"""
            }
