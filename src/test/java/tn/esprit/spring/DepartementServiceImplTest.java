@@ -2,11 +2,11 @@ package tn.esprit.spring;
 
 
 //import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import org.apache.log4j.Logger;
-
+//import org.junit.jupiter.api.Test;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 //import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,15 @@ import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.repository.DepartementRepository;
 
 import tn.esprit.spring.services.IDepartementService;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DepartementServiceImplTest {
 	@Autowired 
 	IDepartementService ids;
-	private static final Logger l = Logger.getLogger(DepartementServiceImplTest.class); 
+	private static final Logger l = LogManager.getLogger(ContratServiceTest.class);
 	@Autowired
 	DepartementRepository departementRepository;
 	

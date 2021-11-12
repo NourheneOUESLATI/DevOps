@@ -3,17 +3,20 @@ package tn.esprit.spring;
 
 
 
-
-
-
+//import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+//import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +24,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 import tn.esprit.spring.entities.Contrat;
+import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.services.IEmployeService;
 
@@ -40,45 +44,78 @@ public class ContratServiceTest {
 	
 	@Test
 	public void ajoutContrat() throws ParseException {
-		String date ="07/11/2021";
+		String date ="05/02/2023";
 		Date dateC=new SimpleDateFormat("dd/MM/yyyy").parse(date);
-		Contrat c=new Contrat(dateC,"MENSUEL",1200);
+		Contrat c=new Contrat(dateC,"MENSUEL",3200);
 		ci.ajouterContrat(c);
 		assertNotNull(c);
+		l.info("Contract added" );
 } 
 	
-	/*@Test 
+	@Test 
 	public void testDeleteContratByRef(){
-		ci.deleteContratById(3);
-		assertNull(cr.findById(3));
-	}*/
+		assertNotNull(cr.findById(2));
+		cr.deleteById(2);
+		
+		
+	}
 	
 	
 	
-	/*@Test 
-	public void testDeleteAllContrats(){
-		cr.deleteAll();
-		l.info("ALL DELETED");
-	}*/
+	
 	
 	@Test
 	public void testGetAllContrats() {
-		cr.findAll() ;
+		Iterable<Contrat> le=cr.findAll();
+		le.forEach(e->l.info(e+"\n"));
 	} 
 	
 	@Test 
 	public void getContratById()
 	{
-		assertNotNull(cr.findById(10));
+		try {
+			
+			assertNotNull(cr.findById(2));	
+			l.info("Contract trouvé "  );
+			} catch (NullPointerException e) {
+				l.error(e.getMessage());
+			}
+	
+		
 	}
 	
 	@Test 
-	public void updateContrat() {
+	public void updateContrat() throws ParseException {
+		try {
+			String date ="22/22/2030";
+			Date dateC=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+			Contrat c = new Contrat(dateC,"CDI",1250);
+			c.setReference(6);
+			int Id = ci.ajouterContrat(c);
+			c.setSalaire(2030);
+			ci.ajouterContrat(c);
+			l.info("Update contrat effectué");
+			} catch (NullPointerException e) {
+				l.error(e.getMessage());
+			}
+		}
 		
-		assertNotNull(cr.findById(10));
-		
-		
+	@Test
+	public void testaffecterEmployetContrat() {
+		cr.findById(3).get();
+		ci.getEmployeById(2);
+		ci.affecterContratAEmploye(3, 2);
 	}
+		
+		
+		//assertNotNull(cr.findById(10));} 
+		
+		
+/*@Test 
+public void testDeleteAllContrats(){
+	cr.deleteAll();
+	l.info("ALL DELETED");
+}*/
 }
 
 

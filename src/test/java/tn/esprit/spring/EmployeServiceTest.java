@@ -1,11 +1,13 @@
 package tn.esprit.spring;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+//import static org.junit.jupiter.api.Assertions.assertNotNull;
 //import static org.junit.Assert.*;
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
 //import org.junit.Test;
-import org.apache.log4j.Logger;
-import org.junit.jupiter.api.Test;
+import org.apache.logging.log4j.Logger;
+//import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,6 +17,8 @@ import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.services.IEmployeService;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,7 +31,7 @@ import tn.esprit.spring.services.IEmployeService;
 	@Autowired
 	ContratRepository conts;
 	
-	private static final Logger l = Logger.getLogger(EmployeServiceTest.class); 
+	private static final Logger l = LogManager.getLogger(EmployeServiceTest.class); 
 	
 	@Test
 	public void ajouterEmploye() {
