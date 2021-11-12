@@ -55,7 +55,7 @@ public class TimesheetPK implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		else if (obj == null)
+		if ((obj == null) | obj.getClass() != getClass())
 			return false;
 		else if (getClass() != obj.getClass())
 			return false;
@@ -65,7 +65,7 @@ public class TimesheetPK implements Serializable {
 				return false;
 		} else if (!dateDebut.equals(other.dateDebut))
 			return false;
-		 else if (dateFin == null) {
+		else if (dateFin == null) {
 			if (other.dateFin != null)
 				return false;
 		} else if (!dateFin.equals(other.dateFin))
